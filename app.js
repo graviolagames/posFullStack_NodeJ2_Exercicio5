@@ -25,7 +25,10 @@ io.on("connection", (socket) => {
 
     socket.on("clientMessage", (msgContent) => {
         socket.emit("recebeuMsg", "Recebeu msg");
+        socket.broadcast.emit("groupMessage", msgContent);
+    });
 
+    socket.on("sendMessage", (msgContent) => {
         socket.broadcast.emit("groupMessage", msgContent);
     });
 });

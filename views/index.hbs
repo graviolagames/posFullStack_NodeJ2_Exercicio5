@@ -44,7 +44,7 @@
             renderMessage(data);
             socket.emit('sendMessage',data);
         }
-        cocket.on('sendMessage',(content)=>{
+        cocket.on('groupMessage',(content)=>{
             console.log(content);
             renderMessage(content);
         });
