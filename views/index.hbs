@@ -44,6 +44,10 @@
             renderMessage(data);
             socket.emit('sendMessage',data);
         }
+        cocket.on('sendMessage',(content)=>{
+            console.log(content);
+            renderMessage(content);
+        });
     </script>
 </body>
 </html>
