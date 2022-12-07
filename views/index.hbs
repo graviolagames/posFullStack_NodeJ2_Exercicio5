@@ -29,6 +29,14 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
         const socket = io();
+        const messageForm = document.getElementById('comment-form');
+        messageForm.onSubmit = function(event){
+            event.preventDefault();
+            const author = document.getElementById('author').value;
+            const comment = document.getElementById('comment').value;
+            const data = {author,comment};
+            socket.emit('sendMessage',data);
+        }
     </script>
 </body>
 </html>
