@@ -21,8 +21,10 @@
 <body>
     <ul id="messages"></ul>
     <form id = "comment-form">
-        <input type = "text" name = "author"/>
-        <input type = "text" name = "comment"/>
+        Nick name:
+        <input type = "text" name = "author" id = "author"/>
+        Message:
+        <input type = "text" name = "comment"/ id = "comment">
         <button type = "submit">Send</button>
     </form>
 
@@ -33,18 +35,18 @@
         const messagesList  = document.getElementById('messages');
         const renderMessage = (message)=>{
             const element = document.createElement('li');
-            element.innerHTML = '<strong>${message.nickname}</strong>:${message.comment}'
+            element.innerHTML = `<strong>${message.author}</strong>:${message.comment}` 
             messagesList.append(element);
-        }
-        messageForm.onSubmit = function(event){
+        };
+        messageForm.onsubmit = function(event){
             event.preventDefault();
-            const author = document.getElementById('author').value;
-            const comment = document.getElementById('comment').value;
-            const data = {author,comment};\
+            const author = document.getElementById("author").value;
+            const comment = document.getElementById("comment").value;
+            const data = {author,comment};
             renderMessage(data);
             socket.emit('sendMessage',data);
         }
-        cocket.on('groupMessage',(content)=>{
+        socket.on('groupMessage',(content)=>{
             console.log(content);
             renderMessage(content);
         });

@@ -29,6 +29,7 @@ io.on("connection", (socket) => {
     });
 
     socket.on("sendMessage", (msgContent) => {
+        console.log(`socket.on SendMessage. msgContent = ${msgContent}`);
         socket.broadcast.emit("groupMessage", msgContent);
     });
 });
