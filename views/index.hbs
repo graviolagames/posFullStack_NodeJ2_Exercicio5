@@ -40,7 +40,8 @@
             event.preventDefault();
             const author = document.getElementById('author').value;
             const comment = document.getElementById('comment').value;
-            const data = {author,comment};
+            const data = {author,comment};\
+            renderMessage(data);
             socket.emit('sendMessage',data);
         }
     </script>
